@@ -311,10 +311,11 @@ def calculate_statistics(
         "final_peers_max": int(np.max(final_peers_values)),
         "final_peers_ci_95": list(calculate_confidence_interval(final_peers_values)),
         # Final HHI statistics (using sample std: ddof=1)
-        "final_hhi_mean": round(np.mean(final_hhi_values), 3),
-        "final_hhi_std": round(np.std(final_hhi_values, ddof=1), 3),
-        "final_hhi_min": round(np.min(final_hhi_values), 3),
-        "final_hhi_max": round(np.max(final_hhi_values), 3),
+        # Note: round to 6 decimal places to preserve precision with large n_peers (e.g. 10000)
+        "final_hhi_mean": round(np.mean(final_hhi_values), 6),
+        "final_hhi_std": round(np.std(final_hhi_values, ddof=1), 6),
+        "final_hhi_min": round(np.min(final_hhi_values), 6),
+        "final_hhi_max": round(np.max(final_hhi_values), 6),
         "final_hhi_ci_95": list(calculate_confidence_interval(final_hhi_values)),
         # Final Nakamoto Liveness statistics
         "final_nakamoto_liveness_mean": round(
@@ -423,45 +424,45 @@ def run_benchmark():
     #     use_dynamic_reward=True,
     # )
 
-    # name = "exp_2"
-    # # Common parameters for all algorithms
-    # params = Parameters(
-    #     n_epochs=40000,  # Reduce epochs for faster execution
-    #     initial_stake_volume=50000.0,
-    #     initial_distribution=Distribution.RANDOM,
-    #     initial_gini=0.0,
-    #     n_peers=10000,  # Reduce peers for faster execution
-    #     n_corrupted=200,
-    #     p_fail=0.5,
-    #     p_join=0.01,
-    #     p_leave=0.01,
-    #     join_amount=NewEntry.NEW_RANDOM,
-    #     penalty_percentage=0.5,
-    #     reward=40.0,
-    #     scheduled_joins=None,
-    #     scheduled_sybil_attacks=None,
-    #     use_dynamic_reward=True,
-    # )
-
-    name = "exp_3"
+    name = "exp_2"
     # Common parameters for all algorithms
     params = Parameters(
         n_epochs=40000,  # Reduce epochs for faster execution
-        initial_stake_volume=30000.0,
+        initial_stake_volume=50000.0,
         initial_distribution=Distribution.RANDOM,
-        initial_gini=0.3,
-        n_peers=5000,  # Reduce peers for faster execution
-        n_corrupted=50,
-        p_fail=0.3,
-        p_join=0.001,
-        p_leave=0.001,
-        join_amount=NewEntry.NEW_MAX,
-        penalty_percentage=0.3,
-        reward=20.0,
-        scheduled_joins=scheduled_joins,
+        initial_gini=0.0,
+        n_peers=10000,  # Reduce peers for faster execution
+        n_corrupted=200,
+        p_fail=0.5,
+        p_join=0.01,
+        p_leave=0.01,
+        join_amount=NewEntry.NEW_RANDOM,
+        penalty_percentage=0.5,
+        reward=40.0,
+        scheduled_joins=None,
         scheduled_sybil_attacks=None,
         use_dynamic_reward=True,
     )
+
+    # name = "exp_3"
+    # # Common parameters for all algorithms
+    # params = Parameters(
+    #     n_epochs=40000,  # Reduce epochs for faster execution
+    #     initial_stake_volume=30000.0,
+    #     initial_distribution=Distribution.RANDOM,
+    #     initial_gini=0.3,
+    #     n_peers=5000,  # Reduce peers for faster execution
+    #     n_corrupted=50,
+    #     p_fail=0.3,
+    #     p_join=0.001,
+    #     p_leave=0.001,
+    #     join_amount=NewEntry.NEW_MAX,
+    #     penalty_percentage=0.3,
+    #     reward=20.0,
+    #     scheduled_joins=scheduled_joins,
+    #     scheduled_sybil_attacks=None,
+    #     use_dynamic_reward=True,
+    # )
 
     # Generate stakes and corrupted peers (use same data for all algorithms)
     stakes_original = generate_peers(

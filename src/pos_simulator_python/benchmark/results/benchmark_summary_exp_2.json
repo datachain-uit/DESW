@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "timestamp": "20251222_161721",
-    "total_execution_time": 11442.434249162674,
+    "timestamp": "20260920_000120",
+    "total_execution_time": 11475.134947538376,
     "parameters": {
       "n_epochs": 40000,
       "n_peers": 10000,
@@ -52,10 +52,10 @@
         9960.784248563565,
         10039.215751436435
       ],
-      "final_hhi_mean": 0.0,
-      "final_hhi_std": 0.0,
-      "final_hhi_min": 0.0,
-      "final_hhi_max": 0.0,
+      "final_hhi_mean": 0.000213,
+      "final_hhi_std": 1e-06,
+      "final_hhi_min": 0.000211,
+      "final_hhi_max": 0.000214,
       "final_hhi_ci_95": [
         0.00021097770025680133,
         0.00021413459040569704
@@ -97,21 +97,21 @@
       "final_zipf_min": 2.0191,
       "final_zipf_max": 2.0317,
       "final_zipf_ci_95": [
-        2.018788448400638,
-        2.0310148230760534
+        2.018788448400571,
+        2.0310148230760388
       ],
-      "execution_time_mean": 656.104,
-      "execution_time_std": 6.616,
-      "execution_time_total": 3280.522,
+      "execution_time_mean": 663.552,
+      "execution_time_std": 25.41,
+      "execution_time_total": 3317.761,
       "execution_time_ci_95": [
-        647.8895761180548,
-        664.3190305065485
+        632.0013681708688,
+        695.1028678597099
       ],
-      "gini_p_value": 1.3487942962934977e-10,
+      "gini_p_value": 1.348794296293494e-10,
       "gini_significant": true,
       "gini_effect_size": -172.7046,
       "gini_interpretation": "large",
-      "nakamoto_p_value": 4.062343696604968e-10,
+      "nakamoto_p_value": 4.0623436966049616e-10,
       "nakamoto_significant": true,
       "nakamoto_effect_size": 131.097,
       "nakamoto_interpretation": "large"
@@ -125,16 +125,16 @@
       "final_gini_min": 0.508,
       "final_gini_max": 0.516,
       "final_gini_ci_95": [
-        0.5068959065551468,
-        0.5154099890878745
+        0.5068959065551469,
+        0.5154099890878744
       ],
       "final_nakamoto_mean": 2086.4,
       "final_nakamoto_std": 14.656,
       "final_nakamoto_min": 2073,
       "final_nakamoto_max": 2111,
       "final_nakamoto_ci_95": [
-        2068.202101954986,
-        2104.597898045014
+        2068.2021019549866,
+        2104.5978980450136
       ],
       "final_peers_mean": 10014.4,
       "final_peers_std": 34.334,
@@ -144,10 +144,10 @@
         9971.769134230555,
         10057.030865769444
       ],
-      "final_hhi_mean": 0.0,
-      "final_hhi_std": 0.0,
-      "final_hhi_min": 0.0,
-      "final_hhi_max": 0.0,
+      "final_hhi_mean": 0.000187,
+      "final_hhi_std": 1e-06,
+      "final_hhi_min": 0.000185,
+      "final_hhi_max": 0.000188,
       "final_hhi_ci_95": [
         0.00018554395752269366,
         0.00018786195990003348
@@ -157,8 +157,8 @@
       "final_nakamoto_liveness_min": 1161,
       "final_nakamoto_liveness_max": 1179,
       "final_nakamoto_liveness_ci_95": [
-        1157.1248447327555,
-        1175.6751552672447
+        1157.1248447327557,
+        1175.6751552672445
       ],
       "final_nakamoto_liveness_pct_mean": 11.648,
       "final_nakamoto_liveness_pct_std": 0.075,
@@ -189,21 +189,21 @@
       "final_zipf_min": 1.5389,
       "final_zipf_max": 1.5822,
       "final_zipf_ci_95": [
-        1.5318557571970246,
-        1.5741685621598995
+        1.531855757197026,
+        1.5741685621598764
       ],
-      "execution_time_mean": 477.512,
-      "execution_time_std": 1.707,
-      "execution_time_total": 2387.561,
+      "execution_time_mean": 636.0,
+      "execution_time_std": 10.039,
+      "execution_time_total": 3179.998,
       "execution_time_ci_95": [
-        475.39239052612686,
-        479.6318629376183
+        623.5342458102198,
+        648.4648606923131
       ],
-      "gini_p_value": 2.5453703231919647e-09,
+      "gini_p_value": 2.5453703231917873e-09,
       "gini_significant": true,
       "gini_effect_size": -82.8584,
       "gini_interpretation": "large",
-      "nakamoto_p_value": 8.929209663200812e-10,
+      "nakamoto_p_value": 8.929209663200792e-10,
       "nakamoto_significant": true,
       "nakamoto_effect_size": 107.6662,
       "nakamoto_interpretation": "large"
@@ -236,10 +236,10 @@
         9996.164899879179,
         10044.235100120823
       ],
-      "final_hhi_mean": 0.0,
-      "final_hhi_std": 0.0,
-      "final_hhi_min": 0.0,
-      "final_hhi_max": 0.0,
+      "final_hhi_mean": 0.000215,
+      "final_hhi_std": 1e-06,
+      "final_hhi_min": 0.000214,
+      "final_hhi_max": 0.000217,
       "final_hhi_ci_95": [
         0.00021401465239983056,
         0.0002167014667856849
@@ -273,29 +273,29 @@
       "final_nakamoto_safety_pct_min": 26.14,
       "final_nakamoto_safety_pct_max": 26.64,
       "final_nakamoto_safety_pct_ci_95": [
-        26.171536819163254,
-        26.62046318083674
+        26.171536819163258,
+        26.620463180836737
       ],
       "final_zipf_mean": 1.7832,
       "final_zipf_std": 0.006,
       "final_zipf_min": 1.7748,
       "final_zipf_max": 1.7886,
       "final_zipf_ci_95": [
-        1.7757376011330028,
-        1.7906427797647257
+        1.7757376011330053,
+        1.7906427797647388
       ],
-      "execution_time_mean": 663.2,
-      "execution_time_std": 54.301,
-      "execution_time_total": 3316.001,
+      "execution_time_mean": 569.067,
+      "execution_time_std": 10.786,
+      "execution_time_total": 2845.335,
       "execution_time_ci_95": [
-        595.7763690176702,
-        730.6238782700801
+        555.6740714746464,
+        582.4600221914303
       ],
-      "gini_p_value": 5.398232749658724e-10,
+      "gini_p_value": 5.398232749658313e-10,
       "gini_significant": true,
       "gini_effect_size": -122.102,
       "gini_interpretation": "large",
-      "nakamoto_p_value": 2.020213476322882e-09,
+      "nakamoto_p_value": 2.020213476322877e-09,
       "nakamoto_significant": true,
       "nakamoto_effect_size": 87.7864,
       "nakamoto_interpretation": "large"
@@ -317,8 +317,8 @@
       "final_nakamoto_min": 412,
       "final_nakamoto_max": 440,
       "final_nakamoto_ci_95": [
-        414.3622689010491,
-        442.03773109895087
+        414.36226890104916,
+        442.0377310989508
       ],
       "final_peers_mean": 10001.6,
       "final_peers_std": 31.691,
@@ -328,10 +328,10 @@
         9962.250807870829,
         10040.949192129172
       ],
-      "final_hhi_mean": 0.001,
-      "final_hhi_std": 0.0,
-      "final_hhi_min": 0.001,
-      "final_hhi_max": 0.001,
+      "final_hhi_mean": 0.000917,
+      "final_hhi_std": 2.5e-05,
+      "final_hhi_min": 0.000891,
+      "final_hhi_max": 0.000945,
       "final_hhi_ci_95": [
         0.0008864050772362709,
         0.0009481658507978595
@@ -341,16 +341,16 @@
       "final_nakamoto_liveness_min": 196,
       "final_nakamoto_liveness_max": 214,
       "final_nakamoto_liveness_ci_95": [
-        196.48758049856198,
-        213.51241950143802
+        196.487580498562,
+        213.512419501438
       ],
       "final_nakamoto_liveness_pct_mean": 2.05,
       "final_nakamoto_liveness_pct_std": 0.065,
       "final_nakamoto_liveness_pct_min": 1.97,
       "final_nakamoto_liveness_pct_max": 2.14,
       "final_nakamoto_liveness_pct_ci_95": [
-        1.9690534107645647,
-        2.130946589235436
+        1.969053410764565,
+        2.1309465892354353
       ],
       "final_nakamoto_safety_mean": 709.6,
       "final_nakamoto_safety_std": 12.72,
@@ -365,23 +365,23 @@
       "final_nakamoto_safety_pct_min": 6.96,
       "final_nakamoto_safety_pct_max": 7.22,
       "final_nakamoto_safety_pct_ci_95": [
-        6.952810190758152,
-        7.235189809241847
+        6.952810190758153,
+        7.235189809241846
       ],
       "final_zipf_mean": 2.3474,
       "final_zipf_std": 0.0039,
       "final_zipf_min": 2.3439,
       "final_zipf_max": 2.3518,
       "final_zipf_ci_95": [
-        2.3425506828095695,
-        2.3522923946124856
+        2.342550682809645,
+        2.352292394612418
       ],
-      "execution_time_mean": 491.582,
-      "execution_time_std": 32.977,
-      "execution_time_total": 2457.909,
+      "execution_time_mean": 426.351,
+      "execution_time_std": 23.782,
+      "execution_time_total": 2131.756,
       "execution_time_ci_95": [
-        450.6355499883983,
-        532.52801612412
+        396.82177459617435,
+        455.8804753122729
       ]
     }
   }

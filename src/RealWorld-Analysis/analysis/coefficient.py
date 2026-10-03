@@ -30,8 +30,9 @@ def calculate_gini_coefficient(df, col="tokens"):
     # Lorenz curve is cumulative tokens divided by total tokens
     lorenz_curve = cum_weights / total_weight
 
-    # Area under the Lorenz curve
-    B = np.trapz(lorenz_curve, dx=1 / len(weights))
+    # Area under the Lorenz curve (support both numpy 1.x np.trapz and numpy 2.x np.trapezoid)
+    trapz_fn = getattr(np, "trapezoid", getattr(np, "trapz", None))
+    B = trapz_fn(lorenz_curve, dx=1 / len(weights))
 
     # Gini coefficient via G = 1 - 2B
     gini_coefficient = 1 - 2 * B
