@@ -128,3 +128,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+# Benchmark automation scripts
+benchmark/run_all_benchmarks.sh
+benchmark/run_all_benchmarks.ps1

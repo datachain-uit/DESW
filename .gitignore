@@ -3,3 +3,7 @@
 node_modules/
 *.log
 package-lock.json
+
+# Benchmark automation scripts
+src/pos_simulator_python/benchmark/run_all_benchmarks.sh
+src/pos_simulator_python/benchmark/run_all_benchmarks.ps1
