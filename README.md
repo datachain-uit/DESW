@@ -166,27 +166,15 @@ Before setting up the project, ensure you have the following installed:
 
 ### PoS Simulator
 
-#### Running Basic Simulations
-
-Navigate to the simulator directory:
-
-```bash
-cd src/pos_simulator_python
-```
-
-Run a simple simulation experiment:
-
-```bash
-python experiments/comparison.py
-```
-
 #### Running Benchmark Experiments
 
-Execute comprehensive algorithm benchmarks:
+Execute comprehensive algorithm benchmarks comparing PoS algorithms (Exp 1, Exp 2, Exp 3):
 
 ```bash
-cd benchmark
-python benchmark_algorithms.py
+cd src/pos_simulator_python/benchmark
+python benchmark_algorithms.py --exp 1
+# or run all benchmarks
+./run_all_benchmarks.sh
 ```
 
 This will generate comparison results in `benchmark/results/` directory.
@@ -386,9 +374,7 @@ DESW/
 │   │   │   ├── simulator.py       # Main simulation engine
 │   │   │   ├── parameters.py      # Parameter definitions
 │   │   │   ├── utils.py           # Utility functions and metrics
-│   │   │   └── ...
-│   │   ├── experiments/           # Experiment scripts
-│   │   ├── benchmark/             # Benchmarking tools
+│   │   ├── benchmark/             # Benchmarking tools (Exp 1, Exp 2, Exp 3)
 │   │   └── requirements.txt       # Python dependencies
 │   ├── RealWorld-Analysis/        # Real-world blockchain analysis
 │   │   ├── chains/                # Blockchain-specific modules

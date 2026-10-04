@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Benchmark script comparing 4 main PoS algorithms
-Run each algorithm 10 times with the same parameters and calculate average results
+Run each algorithm 5 times with the same parameters and calculate average results
 """
 
 import sys
@@ -218,6 +218,9 @@ def run_single_experiment(
         join_amount=params.join_amount,
         penalty_percentage=params.penalty_percentage,
         reward=params.reward,
+        scheduled_joins=params.scheduled_joins,
+        scheduled_sybil_attacks=params.scheduled_sybil_attacks,
+        use_dynamic_reward=params.use_dynamic_reward,
     )
 
     # Create copies of stakes and corrupted to avoid modifying original data
@@ -235,13 +238,13 @@ def run_single_experiment(
         nakamoto_liveness_pct_history,
         nakamoto_safety_history,
         nakamoto_safety_pct_history,
-        theil_history,  # Ignored
+        theil_history, 
         zipf_history,
-        palma_history,  # Ignored
-        shannon_history,  # Ignored
-        shapley_gini_liveness_final,  # Ignored
-        shapley_gini_safety_final,  # Ignored
-        shapley_gini_correlation_final,  # Ignored
+        palma_history,  
+        shannon_history,  
+        shapley_gini_liveness_final,  
+        shapley_gini_safety_final,  
+        shapley_gini_correlation_final, 
     ) = simulate(
         test_stakes,
         test_corrupted,
@@ -394,82 +397,25 @@ def calculate_statistics(
     return base_stats
 
 
-def run_benchmark():
-    """Run the main benchmark"""
+def run_benchmark(params: Parameters = None, name: str = "exp_1"):
+    """Run the main benchmark comparing 4 PoS algorithms"""
 
     # Set seed for reproducible results
     random.seed(42)
     np.random.seed(42)
 
-    scheduled_joins = [(5000, 10000), (35000, 50000)]
-    # scheduled_joins = []
+    if params is None:
+        from benchmark_exp_1 import params as default_params, name as default_name
 
-    # name = "exp_1"
-    # # Common parameters for all algorithms
-    # params = Parameters(
-    #     n_epochs=30000,  # Reduce epochs for faster execution
-    #     initial_stake_volume=20000.0,
-    #     initial_distribution=Distribution.GINI,
-    #     initial_gini=0.8,
-    #     n_peers=2000,  # Reduce peers for faster execution
-    #     n_corrupted=40,
-    #     p_fail=0.3,
-    #     p_join=0.001,
-    #     p_leave=0.001,
-    #     join_amount=NewEntry.NEW_AVERAGE,
-    #     penalty_percentage=0.3,
-    #     reward=20.0,
-    #     scheduled_joins=None,
-    #     scheduled_sybil_attacks=None,
-    #     use_dynamic_reward=True,
-    # )
-
-    name = "exp_2"
-    # Common parameters for all algorithms
-    params = Parameters(
-        n_epochs=40000,  # Reduce epochs for faster execution
-        initial_stake_volume=50000.0,
-        initial_distribution=Distribution.RANDOM,
-        initial_gini=0.0,
-        n_peers=10000,  # Reduce peers for faster execution
-        n_corrupted=200,
-        p_fail=0.5,
-        p_join=0.01,
-        p_leave=0.01,
-        join_amount=NewEntry.NEW_RANDOM,
-        penalty_percentage=0.5,
-        reward=40.0,
-        scheduled_joins=None,
-        scheduled_sybil_attacks=None,
-        use_dynamic_reward=True,
-    )
-
-    # name = "exp_3"
-    # # Common parameters for all algorithms
-    # params = Parameters(
-    #     n_epochs=40000,  # Reduce epochs for faster execution
-    #     initial_stake_volume=30000.0,
-    #     initial_distribution=Distribution.RANDOM,
-    #     initial_gini=0.3,
-    #     n_peers=5000,  # Reduce peers for faster execution
-    #     n_corrupted=50,
-    #     p_fail=0.3,
-    #     p_join=0.001,
-    #     p_leave=0.001,
-    #     join_amount=NewEntry.NEW_MAX,
-    #     penalty_percentage=0.3,
-    #     reward=20.0,
-    #     scheduled_joins=scheduled_joins,
-    #     scheduled_sybil_attacks=None,
-    #     use_dynamic_reward=True,
-    # )
+        params = default_params
+        name = default_name
 
     # Generate stakes and corrupted peers (use same data for all algorithms)
     stakes_original = generate_peers(
         params.n_peers,
         params.initial_stake_volume,
         params.initial_distribution,
-        params.initial_gini,  # initial_gini
+        params.initial_gini, 
     )
     corrupted_original = random.sample(range(params.n_peers), params.n_corrupted)
 
@@ -612,7 +558,31 @@ def run_benchmark():
 
 if __name__ == "__main__":
     try:
-        summary_stats = run_benchmark()
+        import argparse
+
+        parser = argparse.ArgumentParser(
+            description="Benchmark comparing 4 PoS algorithms"
+        )
+        parser.add_argument(
+            "--exp",
+            type=str,
+            default="1",
+            choices=["1", "2", "3", "exp_1", "exp_2", "exp_3"],
+            help="Experiment scenario to run (1, 2, or 3)",
+        )
+        args = parser.parse_args()
+
+        exp_key = args.exp.replace("exp_", "")
+        if exp_key == "1":
+            from benchmark_exp_1 import params, name
+        elif exp_key == "2":
+            from benchmark_exp_2 import params, name
+        elif exp_key == "3":
+            from benchmark_exp_3 import params, name
+        else:
+            from benchmark_exp_1 import params, name
+
+        summary_stats = run_benchmark(params=params, name=name)
 
     except Exception as e:
         import traceback

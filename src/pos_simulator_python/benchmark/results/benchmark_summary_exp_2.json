@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "timestamp": "20260920_000120",
-    "total_execution_time": 11475.134947538376,
+    "timestamp": "20261004_124003",
+    "total_execution_time": 9389.812479257584,
     "parameters": {
       "n_epochs": 40000,
       "n_peers": 10000,
@@ -100,12 +100,12 @@
         2.018788448400571,
         2.0310148230760388
       ],
-      "execution_time_mean": 663.552,
-      "execution_time_std": 25.41,
-      "execution_time_total": 3317.761,
+      "execution_time_mean": 509.071,
+      "execution_time_std": 2.112,
+      "execution_time_total": 2545.357,
       "execution_time_ci_95": [
-        632.0013681708688,
-        695.1028678597099
+        506.4485322646941,
+        511.694372207657
       ],
       "gini_p_value": 1.348794296293494e-10,
       "gini_significant": true,
@@ -192,12 +192,12 @@
         1.531855757197026,
         1.5741685621598764
       ],
-      "execution_time_mean": 636.0,
-      "execution_time_std": 10.039,
-      "execution_time_total": 3179.998,
+      "execution_time_mean": 507.97,
+      "execution_time_std": 0.826,
+      "execution_time_total": 2539.849,
       "execution_time_ci_95": [
-        623.5342458102198,
-        648.4648606923131
+        506.9438030916555,
+        508.99589169441623
       ],
       "gini_p_value": 2.5453703231917873e-09,
       "gini_significant": true,
@@ -284,12 +284,12 @@
         1.7757376011330053,
         1.7906427797647388
       ],
-      "execution_time_mean": 569.067,
-      "execution_time_std": 10.786,
-      "execution_time_total": 2845.335,
+      "execution_time_mean": 474.203,
+      "execution_time_std": 1.397,
+      "execution_time_total": 2371.016,
       "execution_time_ci_95": [
-        555.6740714746464,
-        582.4600221914303
+        472.46851523836193,
+        475.9378491071886
       ],
       "gini_p_value": 5.398232749658313e-10,
       "gini_significant": true,
@@ -376,12 +376,12 @@
         2.342550682809645,
         2.352292394612418
       ],
-      "execution_time_mean": 426.351,
-      "execution_time_std": 23.782,
-      "execution_time_total": 2131.756,
+      "execution_time_mean": 386.671,
+      "execution_time_std": 2.127,
+      "execution_time_total": 1933.355,
       "execution_time_ci_95": [
-        396.82177459617435,
-        455.8804753122729
+        384.02939494802985,
+        389.31260448739494
       ]
     }
   }
