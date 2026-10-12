@@ -166,15 +166,27 @@ Before setting up the project, ensure you have the following installed:
 
 ### PoS Simulator
 
-#### Running Benchmark Experiments
+#### Running Basic Simulations
 
-Execute comprehensive algorithm benchmarks comparing PoS algorithms (Exp 1, Exp 2, Exp 3):
+Navigate to the simulator directory:
 
 ```bash
-cd src/pos_simulator_python/benchmark
-python benchmark_algorithms.py --exp 1
-# or run all benchmarks
-./run_all_benchmarks.sh
+cd src/pos_simulator_python
+```
+
+Run a simple simulation experiment:
+
+```bash
+python experiments/comparison.py
+```
+
+#### Running Benchmark Experiments
+
+Execute comprehensive algorithm benchmarks:
+
+```bash
+cd benchmark
+python benchmark_algorithms.py
 ```
 
 This will generate comparison results in `benchmark/results/` directory.
@@ -294,6 +306,41 @@ This will:
 - Configure network parameters from `params/` directory
 - Display network status and endpoints
 
+#### Performance & Load Testing (polycli & k6)
+
+Benchmark transaction throughput (TPS) and block finality latency across testnet variants using `polycli` and `k6` located in `src/eth-testnet/exp`:
+
+1. **Configure Networks**:
+
+   ```bash
+   cd src/eth-testnet/exp
+   cp networks.env.example networks.env
+   # Fill in RPC_URL and PRIVATE_KEY for each network (DF, SRSW, LSW, DESW)
+   ```
+
+2. **Wait for Network Stabilization**:
+
+   > **Important**: After starting the testnets, allow **10–15 minutes (approx. 2–3 epochs)** for the networks to stabilize before initiating benchmarks. Ensure genesis has passed, validators have established peer connections, and the chain has reached its first finalized checkpoints. You can verify network status with:
+
+   ```bash
+   python3 check_status.py
+   ```
+
+3. **Run Benchmarks**:
+
+   ```bash
+   # Run all workloads for a single model (DF, SRSW, LSW, or DESW)
+   ./run_one.sh DESW
+
+   # Or run all workloads across all networks sequentially
+   ./run_all.sh
+
+   # Or run a specific workload (transfer, deploy, or finality)
+   ./run_one.sh DESW transfer
+   ```
+
+See [`src/eth-testnet/exp/README.md`](src/eth-testnet/exp/README.md) for full prerequisites and setup details.
+
 #### Cleaning Up
 
 Remove all Docker containers and images:
@@ -374,7 +421,9 @@ DESW/
 │   │   │   ├── simulator.py       # Main simulation engine
 │   │   │   ├── parameters.py      # Parameter definitions
 │   │   │   ├── utils.py           # Utility functions and metrics
-│   │   ├── benchmark/             # Benchmarking tools (Exp 1, Exp 2, Exp 3)
+│   │   │   └── ...
+│   │   ├── experiments/           # Experiment scripts
+│   │   ├── benchmark/             # Benchmarking tools
 │   │   └── requirements.txt       # Python dependencies
 │   ├── RealWorld-Analysis/        # Real-world blockchain analysis
 │   │   ├── chains/                # Blockchain-specific modules
@@ -396,9 +445,12 @@ DESW/
 │       ├── lighthouses/           # Lighthouse client variants
 │       ├── doras/                 # Dora explorer variants
 │       ├── params/                # Testnet configuration files
+│       ├── exp/                   # Performance & load testing suite (polycli & k6)
 │       ├── build_lighthouses.sh   # Build Docker images for Lighthouse consensus clients
 │       ├── build_doras.sh         # Build Docker images for Dora blockchain explorers
-│       └── run_network.sh         # Network orchestration script
+│       ├── cleanup_images.sh      # Clean up testnet Docker containers and images
+│       ├── run_network.sh         # Network orchestration script
+│       └── topup_stake.sh         # Validator stake top-up utility
 ├── README.md                      # Main documentation
 └── .gitignore                     # Git ignore patterns
 ```

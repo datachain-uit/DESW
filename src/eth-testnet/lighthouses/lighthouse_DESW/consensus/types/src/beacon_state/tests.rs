@@ -1,4 +1,5 @@
 #![cfg(test)]
+use super::{compute_desw_exponent, DESW_MAX_EXPONENT, DESW_MIN_EXPONENT};
 use crate::test_utils::*;
 use beacon_chain::test_utils::{BeaconChainHarness, EphemeralHarnessType};
 use beacon_chain::types::{
@@ -109,6 +110,25 @@ async fn test_beacon_proposer_index<E: EthSpec>() {
 #[tokio::test]
 async fn beacon_proposer_index() {
     test_beacon_proposer_index::<MinimalEthSpec>().await;
+}
+
+#[test]
+fn desw_exponent_is_bounded_and_non_increasing() {
+    let powers = (0..=100)
+        .map(|step| compute_desw_exponent(step as f64 / 100.0))
+        .collect::<Vec<_>>();
+
+    assert!(powers
+        .iter()
+        .all(|power| (DESW_MIN_EXPONENT..=DESW_MAX_EXPONENT).contains(power)));
+    assert!(powers.windows(2).all(|pair| pair[1] <= pair[0]));
+}
+
+#[test]
+fn desw_positive_power_preserves_stake_ordering() {
+    for power in [DESW_MIN_EXPONENT, 0.5, DESW_MAX_EXPONENT] {
+        assert!((64f64).powf(power) > (32f64).powf(power));
+    }
 }
 
 /// Test that
@@ -304,6 +324,25 @@ mod committees {
     #[tokio::test]
     async fn next_epoch_committee_consistency() {
         committee_consistency_test_suite::<MinimalEthSpec>(RelativeEpoch::Next).await;
+    }
+}
+
+#[test]
+fn desw_exponent_matches_paper_bounds() {
+    let cases = [
+        (0.0, 0.6),
+        (0.2, 0.6),
+        (0.5, 0.5),
+        (0.8, 0.2),
+        (1.0, 0.1),
+    ];
+
+    for (gini, expected) in cases {
+        let actual = super::compute_desw_exponent(gini);
+        assert!(
+            (actual - expected).abs() < f64::EPSILON,
+            "Gini {gini}: expected exponent {expected}, got {actual}"
+        );
     }
 }
 
