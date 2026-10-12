@@ -1,0 +1,20 @@
+mongo:
+  mongoURI: "mongodb://127.0.0.1:27017" # Or Atlas URI: mongodb+srv://<username>:<password>@<cluster>.mongodb.net
+  dbName: "kurtosis_desw"
+
+dora:
+  url: "http://127.0.0.1:32818"
+
+# One process collects one weighting model: baseline (or df), srsw, lsw, or desw.
+# Override via CLI/Env without editing this file: MODEL, DORA_URL, TARGET_EPOCHS, SLOTS_PER_EPOCH, OUTPUT_DIR.
+model: "desw"
+
+# Mainnet preset used by ethereum-package (32 slots per epoch).
+slots_per_epoch: 32
+
+# Export and exit after this many contiguous full epochs, starting at epoch 0.
+target_epochs: 200
+
+output_dir: output
+
+time_loop: 10

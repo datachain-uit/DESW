@@ -446,6 +446,7 @@ DESW/
 │       ├── doras/                 # Dora explorer variants
 │       ├── params/                # Testnet configuration files
 │       ├── exp/                   # Performance & load testing suite (polycli & k6)
+│       ├── GetDataFromKurtosis/   # Devnet data collector and proposer analyzer
 │       ├── build_lighthouses.sh   # Build Docker images for Lighthouse consensus clients
 │       ├── build_doras.sh         # Build Docker images for Dora blockchain explorers
 │       ├── cleanup_images.sh      # Clean up testnet Docker containers and images
